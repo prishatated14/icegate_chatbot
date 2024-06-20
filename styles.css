@@ -1,31 +1,68 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffff;
+    background-color: #f0f2f5;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 #chat-container {
-    background-color: #f7f6f6;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     width: 400px;
-    min-width: 300px;
     max-width: 90%;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
+    height: 90vh;
+    /* Adjust height as needed */
+    overflow: hidden;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+}
+
+.intro img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.intro b {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.intro span {
+    font-size: 15px;
+    font-style: italic;
 }
 
 #chat-box {
-    padding: 20px;
     flex-grow: 1;
     overflow-y: auto;
     background-color: #f9f9f9;
+    padding: 20px;
+    border-top: 1px solid #ddd;
 }
 
 #chat-content {
@@ -36,7 +73,7 @@ body {
 
 .message {
     padding: 10px;
-    border-radius: 6px;
+    border-radius: 10px;
     margin-bottom: 10px;
     max-width: 80%;
     word-wrap: break-word;
@@ -45,9 +82,20 @@ body {
 }
 
 .assistant {
-    background-color: #ffffff;
+    background-color: #A5D6D9;
     align-self: flex-start;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+
+
+.assistant img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 .user {
@@ -60,21 +108,20 @@ body {
 .button-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Add gap between buttons */
+    gap: 10px;
     justify-content: flex-start;
-    /* Align buttons to the left */
 }
 
 .button-container button {
-    background-color: #007bff;
+    background-color: #2864a4;
     color: white;
     border: none;
     border-radius: 6px;
-    padding: 10px 15px;
-    font-size: 14px;
+    padding: 10px 13px;
+    font-size: 12px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-    margin-bottom: 10px; /* Add margin between buttons */
+    margin-bottom: 10px;
 }
 
 .button-container button:hover {
@@ -82,13 +129,23 @@ body {
     transform: translateY(-2px);
 }
 
+#user-message {
+    background-color: #A5D6D9;
+    align-self: flex-start;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
 #user-input {
     display: flex;
     align-items: center;
     padding: 10px;
-    background-color: #e3e2e2;
+    background-color: #30799B;
     border-top: 1px solid #ddd;
     gap: 10px;
+    position: sticky;
+    bottom: 0;
 }
 
 #user-input input {
@@ -121,7 +178,6 @@ body {
     background-color: #dc3545;
     border-radius: 50%;
     padding: 12px;
-    /* Adjust padding for size */
 }
 
 #home-button:hover,
@@ -145,77 +201,15 @@ body {
     color: red;
 }
 
-/*.intro {
-    background-color: #f0f0f0; 
-    padding: 10px; 
-    border-bottom: 1px solid #ccc;        
-    width: 100%; 
-    text-align:left; 
-    font-size: 18px; 
-    font-weight: bold; 
-  }*/
-
-  .message.assistant img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-
-
-  .intro {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #e3e2e2;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .intro img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-  }
-  
-  .intro b {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .intro br {
-    margin-bottom: 5px;
-  }
-
-  .intro span {
-    display: block;
-    font-style: italic;
-    margin-bottom: 5px; 
-  }
-
-/* Highlighted change: Add the active class to enable scrolling only when user has initiated a conversation */
-#chat-container.active .scrollmenu {
-    overflow-y: auto; /* Enable vertical scrolling */
-    max-height: 800px;
-}
-
-/* Default state with no scrolling */
-.scrollmenu {
-    overflow-y: hidden; /* Disable vertical scrolling */
-}
-
 .scrollmenu::-webkit-scrollbar {
-    width: 8px; 
+    width: 8px;
 }
 
 .scrollmenu::-webkit-scrollbar-thumb {
-    background-color: #000000; 
-    border-radius: 4px; 
+    background-color: #555151;
+    border-radius: 4px;
 }
 
 .scrollmenu::-webkit-scrollbar-thumb:hover {
-    background-color: #545252; /* Color of the scrollbar thumb on hover */
+    background-color: #aaa5a5;
 }
